@@ -10,7 +10,8 @@ angular.module('shopApp').controller('RegCtrl',function($scope, $http, $location
             data: $scope.user
         }).success(function(user){
             $location.path('/login');
-        }).error(function () {
+        }).error(function (err) {
+            $scope.err=err;
             $location.path('/reg');
         })
     }

@@ -1,5 +1,5 @@
 angular.module('shopApp',['ngRoute'])
-    .config(function($routeProvider,$locationProvider){
+    .config(function($routeProvider){
         $routeProvider.when('/',{
             templateUrl:'pages/home.html',
             controller:'HomeCtrl'
@@ -15,6 +15,7 @@ angular.module('shopApp',['ngRoute'])
         }).otherwise({
             redirectedTo:'/'
         });
+    //  先执行登录验证
     }).run(function ($rootScope, $location, $http) {
         $http({
             url:'/users/validate',

@@ -52,6 +52,7 @@ angular.module('shopApp').controller('GoodsCtrl',function($rootScope, $scope, $h
         }).error(function () {
         })
     };
+    //删除商品
     $scope.delete = function () {
         $http({
             url:'/goods/delete',
@@ -64,7 +65,7 @@ angular.module('shopApp').controller('GoodsCtrl',function($rootScope, $scope, $h
         }).error(function () {
         })
     }
-    
+    //分页跳转
     $scope.go = function (page) {
         if(page > 0 && page <= $scope.totalPage){
             $scope.pageNumber = page;

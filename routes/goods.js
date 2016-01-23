@@ -3,6 +3,16 @@ var models = require('../models');
 var router = express.Router();
 var async = require('async');
 
+//查询所有商品列表
+router.get('/list', function (req, res) {
+    models.Goods.find({}, function (err,goods) {
+        if(err){
+            res.status(500).json({msg:err});
+        }else{
+            res.json(goods);
+        }
+    });
+});
 //保存商品
 router.post('/add', function (req, res) {
     var _id = req.body._id;
@@ -27,17 +37,6 @@ router.post('/add', function (req, res) {
             }
         });
     }
-
-});
-//查询所有商品列表
-router.get('/list', function (req, res) {
-    models.Goods.find({}, function (err,goods) {
-        if(err){
-            res.status(500).json({msg:err});
-        }else{
-            res.json(goods);
-        }
-    });
 });
 //删除指定商品
 router.post('/delete', function (req, res) {
@@ -66,6 +65,5 @@ router.post('/batchDelete', function (req, res) {
             res.json(result);
         }
     })
-
 });
 module.exports = router;

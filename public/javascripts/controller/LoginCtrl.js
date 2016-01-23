@@ -12,6 +12,7 @@ angular.module('shopApp').controller('LoginCtrl',function($rootScope, $scope, $h
             $rootScope.me=user;
             $location.path('/');
         }).error(function () {
+            $scope.err=err;
             $location.path('/login');
         })
     }
